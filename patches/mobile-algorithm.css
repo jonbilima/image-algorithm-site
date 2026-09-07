@@ -1,0 +1,22 @@
+/* v2.4: the lite renderer must implement the Algorithm scene, not just tilt a photo.
+   Original art remains present until a complete canvas frame has been drawn. */
+#story-anchor > .ia-algorithm-canvas {
+  position:absolute; inset:0; width:100%; height:100%; display:block;
+  pointer-events:none; z-index:1; contain:strict;
+}
+html.app-ready.lite-effects #story-anchor.ia-algorithm-active {
+  animation:none!important; transform:none!important; filter:none!important;
+}
+html.app-ready.lite-effects #story-anchor.ia-algorithm-active > .scene-fallback {
+  opacity:0!important; visibility:hidden; animation:none!important;
+}
+html.webgl-ready #story-anchor > .ia-algorithm-canvas,
+html.motion-paused #story-anchor > .ia-algorithm-canvas { display:none!important; }
+html.motion-paused #story-anchor.ia-algorithm-active > .scene-fallback {
+  opacity:1!important; visibility:visible!important;
+}
+@media(prefers-reduced-motion:reduce) {
+  #story-anchor > .ia-algorithm-canvas { display:none!important; }
+  #story-anchor.ia-algorithm-active > .scene-fallback { opacity:1!important; visibility:visible!important; }
+}
+@media print { #story-anchor > .ia-algorithm-canvas { display:none!important; } }
