@@ -1,0 +1,7 @@
+/* v2.3: only successfully initialized, off-screen elements can be hidden.
+   Never hide static/no-JS content; honor both the OS and the site's motion switch. */
+@media (prefers-reduced-motion: no-preference) {
+  html.app-ready:not(.motion-paused) .ia-reveal-pending { opacity: 0; }
+}
+html.motion-paused .ia-reveal-pending { opacity: 1; }
+@media print { .ia-reveal-pending { opacity: 1 !important; } }
